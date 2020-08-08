@@ -8,10 +8,15 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
+    name: 'home',
     component: Index
   },
   {
     path: '/login',
+    name: 'login',
+    meta: {
+      layout: "auth"
+    },
     component: Login
   }
 ]
