@@ -13,9 +13,11 @@ import Auth from './layouts/Auth.vue'
 Vue.component('default-layout', Default)
 Vue.component('auth-layout', Auth)
 
+
 Vue.config.productionTip = false
 
 new Vue({
+  el: '#app',
   router,
   vuetify,
   render: h => h(App)
