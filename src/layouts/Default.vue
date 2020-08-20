@@ -5,20 +5,15 @@
       app
     >
       <v-list dense>
-        <v-list-item link>
+        <v-list-item 
+          link
+          v-for="menu in menus"
+          :key="menu.name">
           <v-list-item-action>
-            <v-icon>mdi-home</v-icon>
+            <v-icon>mdi-{{menu.icon}}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Home</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>mdi-email</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Contact</v-list-item-title>
+            <v-list-item-title>{{menu.name}}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -30,7 +25,7 @@
       dark
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title>{{title}}</v-toolbar-title>
     </v-app-bar>
 
     <v-main>
@@ -54,7 +49,18 @@ export default {
   },
 
   data: () => ({
-    drawer: null
+    drawer: null,
+    title: 'One Dashboard',
+    menus: [
+      {
+        name: 'Dashboard',
+        icon: 'view-dashboard'
+      },
+      {
+        name: 'UI Elements',
+        icon: 'devices'
+      }
+    ]
   })
 }
 </script>
