@@ -33,14 +33,14 @@
       <v-toolbar-title>Application</v-toolbar-title>
     </v-app-bar>
 
-    <v-content>
+    <v-main>
       <v-container
         class="fill-height"
         fluid
       >
         <router-view/>
       </v-container>
-    </v-content>
+    </v-main>
   
     <v-footer app>
       <span>&copy; {{ new Date().getFullYear() }}</span>
