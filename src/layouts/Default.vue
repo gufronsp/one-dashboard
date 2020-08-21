@@ -54,11 +54,19 @@ export default {
     menus: [
       {
         name: 'Dashboard',
-        icon: 'view-dashboard'
+        icon: 'view-dashboard',
+        type: 'item',
+        childs: []
       },
       {
         name: 'UI Elements',
-        icon: 'devices'
+        icon: 'devices',
+        type: 'group',
+        childs: [
+          {
+            name: 'General'
+          }
+        ]
       }
     ]
   })
