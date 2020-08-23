@@ -5,17 +5,40 @@
       app
     >
       <v-list dense>
-        <v-list-item 
-          link
+        <div 
           v-for="menu in menus"
           :key="menu.name">
-          <v-list-item-action>
-            <v-icon>mdi-{{menu.icon}}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
+          <v-list-item
+            v-if="menu.type == 'item'"
+            link
+          >
+            <v-list-item-action>
+              <v-icon v-text="menu.icon"></v-icon>
+            </v-list-item-action>
             <v-list-item-title>{{menu.name}}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+          </v-list-item>
+
+          <v-list-group
+            v-if="menu.type == 'group'"
+            :prepend-icon="menu.icon"
+            no-action
+          >
+            <template v-slot:activator>
+              <v-list-item-title>{{menu.name}}</v-list-item-title>
+            </template>
+
+            <v-list-item
+              v-for="child in menu.childs"
+              :key="child.name" 
+              link
+            >
+              <v-list-item-title>{{child.name}}</v-list-item-title>
+              <v-list-item-action>
+                <v-icon v-text="child.icon"></v-icon>
+              </v-list-item-action>
+            </v-list-item>
+          </v-list-group>
+        </div>
       </v-list>
     </v-navigation-drawer>
 
@@ -54,17 +77,18 @@ export default {
     menus: [
       {
         name: 'Dashboard',
-        icon: 'view-dashboard',
+        icon: 'mdi-view-dashboard',
         type: 'item',
         childs: []
       },
       {
-        name: 'UI Elements',
-        icon: 'devices',
+        name: 'UI Element',
+        icon: 'mdi-devices',
         type: 'group',
         childs: [
           {
-            name: 'General'
+            name: 'General',
+            icon: 'mdi-menu-right'
           }
         ]
       }
