@@ -10,6 +10,7 @@
           :key="menu.name">
           <v-list-item
             v-if="menu.type == 'item'"
+            :to="menu.link"
             link
           >
             <v-list-item-action>
@@ -30,6 +31,7 @@
             <v-list-item
               v-for="child in menu.childs"
               :key="child.name" 
+              :to="child.link"
               link
             >
               <v-list-item-title>{{child.name}}</v-list-item-title>
@@ -79,16 +81,21 @@ export default {
         name: 'Dashboard',
         icon: 'mdi-view-dashboard',
         type: 'item',
+        link: '/',
         childs: []
       },
       {
-        name: 'UI Element',
+        name: 'UI Elements',
         icon: 'mdi-devices',
         type: 'group',
+        link: null,
         childs: [
           {
             name: 'General',
-            icon: 'mdi-menu-right'
+            icon: 'mdi-menu-right',
+            type: 'item',
+            link: '/ui-elements/general',
+            childs: []
           }
         ]
       }
